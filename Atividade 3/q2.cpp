@@ -1,28 +1,38 @@
-#include <iostream>
-#include <vector>
-#include <utility> 
-#include <algorithm>
+#include<iostream>
+#include<climits>
 
 using namespace std;
 
-int main()
+int soma_max_subarray(int array_num[], int tamanho)
 {
-	vector<int> vetor_num;
-	int tamanho, num, num_distintos;
-	cin >> tamanho;
+	int maior_ate_agora = INT_MIN, maior_local = 0;
 	for (int i = 0; i < tamanho; i++)
 	{
-		cin >> num;
-		vetor_num.push_back(num);
-	}
-	sort(vetor_num.begin(),vetor_num.end());
-	for (int i = 0; i < vetor_num.size(); i++)
-	{
-		if (vetor_num[i] != vetor_num[i+1])
+		maior_local = maior_local + array_num[i];
+		if (maior_ate_agora < maior_local)
 		{
-			num_distintos++;
+			maior_ate_agora = maior_local;
+		}
+		if (maior_local < 0)
+		{
+			maior_local = 0;
 		}
 	}
-	cout << num_distintos <<endl;
+	return maior_ate_agora;
+}
+
+int main()
+{
+	int tamanho, valor;
+	int soma_max = 0;
+	cin >> tamanho;
+	int vetor_numeros[tamanho];
+	for (int i = 0; i < tamanho; i++)
+	{
+		cin >> valor;
+		vetor_numeros[i] = valor;
+	}
+	soma_max = soma_max_subarray(vetor_numeros, tamanho);
+	cout << soma_max << endl;
 	return 0;
 }
