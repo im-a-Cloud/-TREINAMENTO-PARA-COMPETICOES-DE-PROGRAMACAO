@@ -20,12 +20,12 @@ int main() {
       contagem++;
     }
   }
-  if (contagem = 0)
+  if (contagem == 0)
   {
     cout << contagem << endl;
     return 0;
   }
-  contagem = 0;
+  contagem = 1;
   regex bab("bab");
   regex aba("aba");
   string_final = regex_replace(string_concatenada, bab, "");
